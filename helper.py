@@ -117,7 +117,7 @@ class Helper:
             examples.append(example)
 
         scores = scorer.score(examples)
-        print(scores)
+        # print(scores)
 
         precision = scores.get("ents_p", 0.0) * 100
         recall = scores.get("ents_r", 0.0) * 100

@@ -112,21 +112,20 @@ class Helper:
         for text, annotations in eval_data:
             doc = nlp.make_doc(text)
             example = Example.from_dict(doc, annotations)
+
+            example.predicted = nlp(str(example.predicted))
             examples.append(example)
 
-        # Score all examples at once
         scores = scorer.score(examples)
+        print(scores)
 
-        # Retrieve evaluation metrics
-        precision = scores.get("token_p", 0.0) * 100
-        recall = scores.get("token_r", 0.0) * 100
-        f1_score = scores.get("token_f", 0.0) * 100
-        accuracy = scores.get("token_acc", 0.0) * 100
+        precision = scores.get("ents_p", 0.0) * 100
+        recall = scores.get("ents_r", 0.0) * 100
+        f1_score = scores.get("ents_f", 0.0) * 100
 
         print(f"Precision: {precision:.2f}%")
         print(f"Recall: {recall:.2f}%")
         print(f"F1-Score: {f1_score:.2f}%")
-        print(f"Accuracy: {accuracy:.2f}%")
 
     @staticmethod
     def generate_legend(label_colors):

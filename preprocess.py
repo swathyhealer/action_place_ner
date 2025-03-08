@@ -1,10 +1,11 @@
 from helper import Helper
-
+from random import shuffle
 
 def single_label_preprocessor(data_path, label, prefix):
 
     data = Helper.load_tsv(data_path)
     spacy_format_data = Helper.spacy_format_converter(data, label=label)
+    shuffle(spacy_format_data)
     train_data, val_data, test_data = Helper.train_val_test_splitter(spacy_format_data)
     training_dataset_path = "./" + prefix + "_training_data.spacy"
     val_dataset_path = "./" + prefix + "_eval_data.spacy"

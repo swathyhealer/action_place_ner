@@ -2,6 +2,12 @@
 
 This project focuses on implementing a Named Entity Recognition (NER) system capable of identifying multiple labels within text, specifically "ACTIVITY OR CAUSE" and "PLACE". Given the multilabel nature of the dataset, we employ two separate spaCy models to handle each label independently and then combine their outputs for comprehensive entity recognition.
 
+**NOTE :** After cloning repo , run flowing command to ensure LFS files are downloaded properly.
+
+   ```
+      git lfs pull
+   ```
+
 ## Approach
 
 1. **Data Preparation**:

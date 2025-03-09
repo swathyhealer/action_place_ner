@@ -12,7 +12,7 @@ This project focuses on implementing a Named Entity Recognition (NER) system cap
 
 1. **Data Preparation**:
    - **Annotation**: The dataset is annotated with entities corresponding to "ACTIVITY OR CAUSE" and "PLACE".
-   - **Preprocessing**: Using `preprocess.py`, the annotated data is converted into a format suitable for spaCy training, resulting in training, validation, and testing datasets.
+   - **Preprocessing**: Using `preprocess.py`, the annotated data is converted into a format suitable for spaCy training, resulting in training, validation, and testing datasets (60:20:20).
 
 2. **Model Training**:
    - **Separate Models**: Two distinct spaCy models are trained:
@@ -30,6 +30,20 @@ This project focuses on implementing a Named Entity Recognition (NER) system cap
 3. **Model Evaluation**:
    - **Evaluation Script**: The `evaluate_model.py` script assesses the performance of both models on the test dataset.
    - **Metrics**: Standard NER evaluation metrics such as precision, recall, and F1-score are computed.
+   - **Evaluation Results**:
+
+         Activity NER Model:
+
+            Precision: 87.90%
+            Recall: 86.49%
+            F1-Score: 87.19%
+
+
+         Place NER Model:
+
+            Precision: 95.40%
+            Recall: 95.99%
+            F1-Score: 95.70%
 
 4. **Prediction Pipeline**:
    - **NerPipeline Class**: Located in `prediction_utils.py`, this class loads both trained models and provides methods for predicting entities in new text data.
@@ -61,8 +75,17 @@ This project focuses on implementing a Named Entity Recognition (NER) system cap
    python evaluate_model.py
    ```
 
+4. **Prediction Pipeline**:
+   Use *NerPipeline Class* located in `prediction_utils.py`
 
-4. **Running the Streamlit App**:
+   sample code :
+   ```
+   text = "1st degree burn with water at home of the left hand today"
+   ner_pipeline = NerPipeline()
+   extracted_data = ner_pipeline.process(text)
+   ```
+
+5. **Running the Streamlit App**:
    ```
    streamlit run app.py
    ```
